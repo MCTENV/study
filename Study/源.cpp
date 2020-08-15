@@ -1,5 +1,5 @@
 /*
- * �뷨��������ͬʱ���浱ǰ�·��
+ * 想法：求树高同时保存当前最长路径
  */
 #include<stdio.h>
 #include<stdlib.h>
@@ -131,7 +131,7 @@ void print(pNode* res, int len) {
 
 int leh(pNode root, pNode* &res, pNode* &temp, int &max, int len) {
 	if (root == NULL) {
-		if (len > max) {//��Ҫ��������·��
+		if (len > max) {//需要保存这条路径
 			printf("\n");
 			max = len;
 			NodeCopy(temp, res, max);
@@ -146,20 +146,20 @@ int leh(pNode root, pNode* &res, pNode* &temp, int &max, int len) {
 	leh(root->right, res, temp, max, len);
 }
 
-//�ǵݹ�ʵ��
+//非递归实现
 int leh2(pNode root, pNode* &res, int &max) {
 	pNodeStack* stack = (pNodeStack*)malloc(sizeof(pNodeStack)*MAXSIZE);
 	initStack(stack);
 	int len = 0, top = 0;
 	pNode p = root;
-	while (p != NULL || top != 0) {//�������
-		if (p != NULL) {//p��Ϊ�գ�����ջ��flag=1
+	while (p != NULL || top != 0) {//后序遍历
+		if (p != NULL) {//p不为空，则入栈，flag=1
 			stack[top]->node = p;
 			stack[top++]->flag = 1;
 			len++;
 			p = p->left;
 		}
-		else {//pΪ�գ�flag=1���޲��������flag=2����ջ��������ջ���Һ���
+		else {//p为空，flag=1，无操作，如果flag=2，则弹栈，最后访问栈顶右孩子
 			p = stack[top - 1]->node;
 			int sign = stack[--top]->flag;
 			if (sign == 1) {
