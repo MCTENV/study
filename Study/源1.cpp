@@ -33,7 +33,7 @@ int partion(char* a, int s, int e) {
 	else return i;
 }
 
-/***********二〇一七年，二*************/
+/***********浜屻�囦竴涓冨勾锛屼簩*************/
 void sort(char* a, int s, int e) {
 	if (s < e) {
 		int k = partion(a, s, e);
@@ -96,6 +96,7 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		printf("%c:%d\n", a[i], sum[i]);
 	}
-	scanf_s("%s", a);
+	//scanf_s("%s", a);
+	scanf("%s", &a);
 	return 0;
 }

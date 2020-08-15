@@ -180,19 +180,19 @@ int leh2(pNode root, pNode* &res, int &max) {
 	return 0;
 }
 
-//int main() {
-//	pNode root;
-//	initTree(root);
-//	/*pNode* res, *temp;
-//	int max = 0, len = 0;
-//	res = (pNode*)malloc(sizeof(pNode)*MAXSIZE);
-//	/*temp = (pNode*)malloc(sizeof(pNode)*MAXSIZE);
-//	leh(root, res, temp, max, len);
-//	leh2(root, res, max);
-//	printf("\nmax=%d\n", max);
-//	print(res, max);*/
-//	int len;
-//	pNode* res = path(root, len);
-//	print(res, len);
-//	scanf_s("%d", &len);
-//}
+int main() {
+	pNode root;
+	initTree(root);
+	/*pNode* res, *temp;
+	int max = 0, len = 0;
+	res = (pNode*)malloc(sizeof(pNode)*MAXSIZE);
+	/*temp = (pNode*)malloc(sizeof(pNode)*MAXSIZE);
+	leh(root, res, temp, max, len);
+	leh2(root, res, max);
+	printf("\nmax=%d\n", max);
+	print(res, max);*/
+	int len;
+	pNode* res = path(root, len);
+	print(res, len);
+	scanf/*_s*/("%d", &len);
+}
