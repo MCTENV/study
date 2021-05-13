@@ -27,17 +27,17 @@ int main(int argc, char *argv[])
     if (fpre.FullMatch(argv[1]))
     {
         double inputValue = strtod(argv[1], &(argv[1]) + strlen(argv[1]));
-
 #ifdef USE_MYMATH
-        fprintf(stdout, "use my math ");
+        fprintf(stdout, "use my math\n");
         double outputValue = my_sqrt(inputValue);
 #else
-        fprintf(stdout, "use sys math ");
+        fprintf(stdout, "use sys math\n");
         double outputValue = sqrt(inputValue);
 #endif
         fprintf(stdout, "The square root of %g is %g\n", inputValue, outputValue);
     }
-    else{
+    else
+    {
         fprintf(stdout, "Usage: .*number");
     }
     return 0;
