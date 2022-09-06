@@ -4,6 +4,8 @@
     "complex": "cpp",
     "functional": "cpp",
     "ostream": "cpp",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "new": "cpp",
+    "type_traits": "cpp"
   }
 }
