@@ -25,13 +25,29 @@ if(USE_MYMATH)
     list(APPEND EXTRA_LIBS MathFunctions)
 endif()
 
+find_package(Poco REQUIRED COMPONENTS 
+  Net
+)
+include_directories(
+  include
+)
+aux_source_directory(src/Widget WIDGET)
+
 add_executable(tutorial src/tutorial.cxx)
+add_executable(main src/main.cpp ${WIDGET})
 
 target_link_libraries(tutorial PUBLIC ${EXTRA_LIBS})
 
 target_include_directories(tutorial PUBLIC
     ${PROJECT_BINARY_DIR}
 )
+
+
+add_executable(server src/Net/server.cpp)
+add_executable(client src/Net/client.cpp)
+
+target_link_libraries(server Poco::Net)
+target_link_libraries(client Poco::Net)
 
 install(TARGETS tutorial DESTINATION bin)
 install(FILES "${PROJECT_BINARY_DIR}/config/TutorialConfig.h" DESTINATION include)
