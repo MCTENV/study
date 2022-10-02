@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.6)
-project(Math)
+# project(Math)
 
 set(Math_VERSION_MAJOR 1)
 set(Math_VERSION_NOJAR 0)
@@ -16,8 +16,10 @@ add_custom_command(
     DEPENDS MakeTable
 )
 
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/libs)
+
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-add_library(MathFunctions
+add_library(MathFunctions SHARED
     src/mysqrt.cxx
     ${CMAKE_CURRENT_BINARY_DIR}/Table.h
 )

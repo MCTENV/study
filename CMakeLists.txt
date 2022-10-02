@@ -6,11 +6,13 @@ set (Tutorial_VERSION_MINOR 1)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set (CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/build/share/tutorial)
+set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/build/share/tutorial)
 
 configure_file(config/TutorialConfig.h.in config/TutorialConfig.h)
 
 set (CMAKE_C_FLAGS "libpcrecpp")
+add_compile_options(-Wall -Werror -Wpedantic)
 list (APPEND EXTRA_LIBS pcrecpp)
 
 include(CheckSymbolExists)
@@ -45,12 +47,14 @@ target_include_directories(tutorial PUBLIC
 
 add_executable(server src/Net/server.cpp)
 add_executable(client src/Net/client.cpp)
+add_executable(stl_algo src/stl_algorithm.cpp)
 
 target_link_libraries(server Poco::Net)
 target_link_libraries(client Poco::Net)
+target_link_libraries(stl_algo -fsanitize=address)
 
-install(TARGETS tutorial DESTINATION bin)
-install(FILES "${PROJECT_BINARY_DIR}/config/TutorialConfig.h" DESTINATION include)
+# install(TARGETS tutorial DESTINATION bin)
+# install(FILES "${PROJECT_BINARY_DIR}/config/TutorialConfig.h" DESTINATION include)
 
 include(CTest)
 set(CTEST_PROJECT_NAME "CMakeTutorial")

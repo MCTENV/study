@@ -23,16 +23,8 @@ std::unique_ptr<T> make_unique(Args &&...args) {
 }
 #endif
 
-struct Widget::Impl {
-  Gadget g1, g2, g3;
-  std::string name;
-  std::vector<double> data;
-};
-
 Widget::Widget() : pImpl(make_unique<Impl>()) {
-  pImpl->g1.print();
-  pImpl->g2.print();
-  pImpl->g3.print();
+  std::cout << "Widget created" << std::endl;
 }
 
 Widget::~Widget() = default;
@@ -50,3 +42,7 @@ Widget &Widget::operator=(const Widget &lhs) {
   *pImpl = *lhs.pImpl;
   return *this;
 }
+
+// void Widget::setName(const chen::string &str) { pImpl->name = str; }
+
+// void Widget::setName(chen::string &&str) { pImpl->name = std::move(str); }

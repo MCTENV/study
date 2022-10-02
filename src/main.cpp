@@ -13,9 +13,6 @@ using namespace std;
 
 int main(int argc, char const* argv[]) {
   auto spw = make_shared<Widget>(Widget());
-  int&& t = 10;
-  std::cout << typeid(t).name() << std::endl;
-  auto lt = std::move(t);
-  std::cout << typeid(lt).name() << std::endl;
+  spw->setName("hello world");
   return 0;
 }
