@@ -97,6 +97,6 @@ int main() {
 		printf("%c:%d\n", a[i], sum[i]);
 	}
 	//scanf_s("%s", a);
-	scanf("%s", &a);
+	scanf("%s", a);
 	return 0;
 }
