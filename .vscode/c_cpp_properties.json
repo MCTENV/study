@@ -7,11 +7,12 @@
             ],
             "defines": [
                 "Tutorial_VERSION_MAJOR",
-                "Tutorial_VERSION_MINOR"
+                "Tutorial_VERSION_MINOR",
+                "PROJECT_PATH=\"PATH\""
             ],
             "compilerPath": "/usr/bin/gcc",
-            "cStandard": "gnu11",
-            "cppStandard": "gnu++11",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
             "intelliSenseMode": "linux-gcc-x64",
             "configurationProvider": "ms-vscode.cmake-tools"
         }

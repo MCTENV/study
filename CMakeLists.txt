@@ -4,15 +4,16 @@ project (Tutorial)
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 1)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/build/share/tutorial)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
 configure_file(config/TutorialConfig.h.in config/TutorialConfig.h)
 
 set (CMAKE_C_FLAGS "libpcrecpp")
-add_compile_options(-Wall -Werror -Wpedantic)
+add_compile_options(-Wall -Wpedantic)
 list (APPEND EXTRA_LIBS pcrecpp)
 
 include(CheckSymbolExists)
