@@ -1,5 +1,6 @@
 {
-  "vim.vimrc.enable": true,
+  "vim.easymotion": true,
+  // "vim.vimrc.enable": true,
   "vim.leader": "<space>",
   "vim.handleKeys": {
     "<C-d>": true,
@@ -7,6 +8,7 @@
     "<C-z>": false,
     "<C-n>": false,
     "<C-f>": false,
+    "<C-j>": false
   },
   "files.associations": {
     "*.vim": "vimrc",
@@ -69,5 +71,6 @@
     "unordered_set": "cpp",
     "regex": "cpp",
     "valarray": "cpp"
-  }
+  },
+  "cmake.configureOnOpen": true
 }

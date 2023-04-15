@@ -17,7 +17,7 @@ using namespace std;
 
 #if __cplusplus == 201103L
 template <typename T, typename... Args>
-std::unique_ptr<T> make_unique(Args &&... args) {
+std::unique_ptr<T> make_unique(Args &&...args) {
   cout << "self make unique" << endl;
   return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
 }
@@ -242,10 +242,10 @@ struct Tuple<Head, Tail...> : public Tuple<Tail...> {
 
   Tuple() : head() {}
 
-  Tuple(const Head &h, const Tail &... t) : Inherited(t...), head(h) {}
+  Tuple(const Head &h, const Tail &...t) : Inherited(t...), head(h) {}
 
   template <typename UHead, typename... UTail>
-  Tuple(UHead &&h, UTail &&... t)
+  Tuple(UHead &&h, UTail &&...t)
       : Inherited(std::forward<UTail>(t)...), head(std::forward<UHead>(h)) {}
   Base head;
 };
