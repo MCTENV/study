@@ -1,6 +1,7 @@
 {
   "vim.easymotion": true,
   // "vim.vimrc.enable": true,
+  "vim.surround": true,
   "vim.leader": "<space>",
   "vim.handleKeys": {
     "<C-d>": true,
@@ -8,7 +9,8 @@
     "<C-z>": false,
     "<C-n>": false,
     "<C-f>": false,
-    "<C-j>": false
+    "<C-j>": false,
+    "<C-w>": false,
   },
   "files.associations": {
     "*.vim": "vimrc",

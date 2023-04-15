@@ -25,8 +25,7 @@ class Bashful {
 };
 
 class SnowWhite {
-
-public:
+ public:
   Dopey dopey;
   Sneezy sneezy;
   Bashful bashful;
