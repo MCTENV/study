@@ -66,7 +66,7 @@ void initTree(pNode &root) {
 }
 
 void initStack(pNodeStack* stack) {
-	for (size_t i = 0; i < MAXSIZE; i++) {
+	for (int i = 0; i < MAXSIZE; i++) {
 		stack[i] = smalloc();
 	}
 }
@@ -109,20 +109,20 @@ pNode* path(pNode &root, int &high) {
 }
 
 void NodeCopy(pNode* src, pNode* des, int len) {
-	for (size_t i = 0; i < len; i++) {
+	for (int i = 0; i < len; i++) {
 		des[i] = src[i];
 	}
 }
 
 void NodeCopy(pNodeStack* src, pNode* des, int len) {
-	for (size_t i = 0; i < len; i++) {
+	for (int i = 0; i < len; i++) {
 		des[i] = src[i]->node;
 	}
 }
 
 void print(pNode* res, int len) {
 	printf("path:");
-	for (size_t i = 0; i < len; i++)
+	for (int i = 0; i < len; i++)
 	{
 		printf("%d", res[i]->data);
 	}
@@ -144,6 +144,7 @@ int leh(pNode root, pNode* &res, pNode* &temp, int &max, int len) {
 	++len;
 	leh(root->left, res, temp, max, len);
 	leh(root->right, res, temp, max, len);
+	return len;
 }
 
 //非递归实现
@@ -186,11 +187,12 @@ int main() {
 	/*pNode* res, *temp;
 	int max = 0, len = 0;
 	res = (pNode*)malloc(sizeof(pNode)*MAXSIZE);
-	/*temp = (pNode*)malloc(sizeof(pNode)*MAXSIZE);
+	temp = (pNode*)malloc(sizeof(pNode)*MAXSIZE);
 	leh(root, res, temp, max, len);
 	leh2(root, res, max);
 	printf("\nmax=%d\n", max);
-	print(res, max);*/
+	print(res, max);
+	*/
 	int len;
 	pNode* res = path(root, len);
 	print(res, len);
