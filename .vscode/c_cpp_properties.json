@@ -5,7 +5,12 @@
             "includePath": [
                 "${workspaceFolder}/**"
             ],
-            "defines": [],
+            "defines": [
+                "USE_MYMATH",
+                "MY_MACRO",
+                "Tutorial_VERSION_MAJOR",
+                "Tutorial_VERSION_MINOR"
+            ],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "gnu17",
             "cppStandard": "gnu++14",

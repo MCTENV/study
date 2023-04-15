@@ -10,6 +10,8 @@ set (CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/build/share/tutorial)
 
 configure_file(config/TutorialConfig.h.in config/TutorialConfig.h)
 
+message(STATUS "PATH is: $ENV{PATH}")
+
 set (CMAKE_C_FLAGS "libpcrecpp")
 list (APPEND EXTRA_LIBS pcrecpp)
 
@@ -32,6 +34,8 @@ target_link_libraries(tutorial PUBLIC ${EXTRA_LIBS})
 target_include_directories(tutorial PUBLIC
     ${PROJECT_BINARY_DIR}
 )
+
+target_compile_definitions(tutorial PUBLIC MY_MACRO=233)
 
 install(TARGETS tutorial DESTINATION bin)
 install(FILES "${PROJECT_BINARY_DIR}/config/TutorialConfig.h" DESTINATION include)
