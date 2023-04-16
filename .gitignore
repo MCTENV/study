@@ -269,3 +269,4 @@ libs/
 *.dta
 *.png
 *.ii
+.cache/

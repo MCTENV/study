@@ -11,11 +11,17 @@ project (Tutorial)
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 1)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set (CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/build/share/tutorial)
 
 configure_file(config/TutorialConfig.h.in config/TutorialConfig.h)
+
+set (DCMAKE_EXPORT_COMPILE_COMMANDS 1)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+
+message(STATUS "PATH is: $ENV{PATH}")
 
 set (CMAKE_C_FLAGS "libpcrecpp")
 list (APPEND EXTRA_LIBS pcrecpp)
@@ -32,15 +38,8 @@ if(USE_MYMATH)
     list(APPEND EXTRA_LIBS MathFunctions)
 endif()
 
-add_executable(tutorial src/tutorial.cxx)
+add_subdirectory(src)
 
-target_link_libraries(tutorial PUBLIC ${EXTRA_LIBS})
-
-target_include_directories(tutorial PUBLIC
-    ${PROJECT_BINARY_DIR}
-)
-
-install(TARGETS tutorial DESTINATION bin)
 install(FILES "${PROJECT_BINARY_DIR}/config/TutorialConfig.h" DESTINATION include)
 
 include(CTest)

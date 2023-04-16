@@ -3,10 +3,16 @@ aux_source_directory(Widget WIDGET)
 add_executable(tutorial tutorial.cxx)
 add_executable(main main.cpp ${WIDGET})
 add_executable(mytest mytest.cpp)
+add_executable(objects objects.cpp)
 
 target_link_libraries(tutorial PUBLIC ${EXTRA_LIBS})
 
 target_include_directories(tutorial PUBLIC ${PROJECT_BINARY_DIR})
+
+target_compile_definitions(tutorial PUBLIC MY_MACRO=233)
+install(TARGETS tutorial DESTINATION bin)
+
+target_include_directories(main PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 add_subdirectory(Net)
 add_subdirectory(Others)
