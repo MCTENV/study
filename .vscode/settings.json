@@ -74,5 +74,8 @@
     "regex": "cpp",
     "valarray": "cpp"
   },
-  "cmake.configureOnOpen": true
+  "cmake.configureOnOpen": true,
+  "clang-tidy.compilerArgs": [
+    "-std=c++17"
+  ]
 }
