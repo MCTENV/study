@@ -1,19 +1,29 @@
 cmake_minimum_required(VERSION 3.10)
+set(SOLUTION_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+set(COMPILER_OUTPUT_PATH ${SOLUTION_PATH}/build)
+set(LIBS_OUTPUT_PATH ${COMPILER_OUTPUT_PATH}/lib)
+set(EXEC_OUTPUT_PATH ${COMPILER_OUTPUT_PATH}/bin)
+
+set(EXECUTABLE_OUTPUT_PATH ${EXEC_OUTPUT_PATH})
+set(LIBRARY_OUTPUT_PATH ${LIBS_OUTPUT_PATH})
 project (Tutorial)
 # version
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 1)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/build/share/tutorial)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+set (CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/build/share/tutorial)
 
 configure_file(config/TutorialConfig.h.in config/TutorialConfig.h)
 
+set (DCMAKE_EXPORT_COMPILE_COMMANDS 1)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+
+message(STATUS "PATH is: $ENV{PATH}")
+
 set (CMAKE_C_FLAGS "libpcrecpp")
-add_compile_options(-Wall -Wpedantic)
 list (APPEND EXTRA_LIBS pcrecpp)
 
 include(CheckSymbolExists)
@@ -28,17 +38,9 @@ if(USE_MYMATH)
     list(APPEND EXTRA_LIBS MathFunctions)
 endif()
 
-find_package(Poco REQUIRED COMPONENTS 
-  Net
-)
-include_directories(
-  include
-)
-
 add_subdirectory(src)
 
-# install(TARGETS tutorial DESTINATION bin)
-# install(FILES "${PROJECT_BINARY_DIR}/config/TutorialConfig.h" DESTINATION include)
+install(FILES "${PROJECT_BINARY_DIR}/config/TutorialConfig.h" DESTINATION include)
 
 include(CTest)
 set(CTEST_PROJECT_NAME "CMakeTutorial")
@@ -72,5 +74,3 @@ do_test(Tutorial 7 "7 is 2.645")
 do_test(Tutorial 25 "25 is 5")
 do_test(Tutorial -25 "-25 is [-nan|nan|0]")
 do_test(Tutorial 0.0001 "0.0001 is 0.01")
-
-# do nothing

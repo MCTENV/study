@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.6)
-# project(Math)
+project(Math)
 
 set(Math_VERSION_MAJOR 1)
 set(Math_VERSION_NOJAR 0)

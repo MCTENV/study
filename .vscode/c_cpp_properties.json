@@ -6,13 +6,14 @@
                 "${workspaceFolder}/**"
             ],
             "defines": [
+                "USE_MYMATH",
+                "MY_MACRO",
                 "Tutorial_VERSION_MAJOR",
-                "Tutorial_VERSION_MINOR",
-                "PROJECT_PATH=\"PATH\""
+                "Tutorial_VERSION_MINOR"
             ],
             "compilerPath": "/usr/bin/gcc",
-            "cStandard": "c11",
-            "cppStandard": "c++11",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
             "intelliSenseMode": "linux-gcc-x64",
             "configurationProvider": "ms-vscode.cmake-tools"
         }

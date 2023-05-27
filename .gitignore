@@ -264,6 +264,9 @@ __pycache__/
 *.sln
 
 build/
+.vscode
 libs/
-
+*.dta
+*.png
+*.ii
 .cache/
