@@ -266,4 +266,7 @@ __pycache__/
 build/
 .vscode
 libs/
+*.dta
+*.png
+*.ii
 .cache/
