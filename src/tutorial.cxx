@@ -6,7 +6,7 @@
 
 #include "config/TutorialConfig.h"
 #ifdef USE_MYMATH
-#include "my_math.h"
+#include "MathFunctions/my_math.h"
 #else
 #include <cmath>
 #endif

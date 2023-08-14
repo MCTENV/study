@@ -1,4 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
+project(Tutorial)
+
+SET(CMAKE_BUILD_TYPE "Debug")
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
+SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(SOLUTION_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 set(COMPILER_OUTPUT_PATH ${SOLUTION_PATH}/build)
@@ -7,36 +13,38 @@ set(EXEC_OUTPUT_PATH ${COMPILER_OUTPUT_PATH}/bin)
 
 set(EXECUTABLE_OUTPUT_PATH ${EXEC_OUTPUT_PATH})
 set(LIBRARY_OUTPUT_PATH ${LIBS_OUTPUT_PATH})
-project (Tutorial)
-# version
-set (Tutorial_VERSION_MAJOR 1)
-set (Tutorial_VERSION_MINOR 1)
 
-set(CMAKE_CXX_STANDARD 17)
+# version
+set(Tutorial_VERSION_MAJOR 1)
+set(Tutorial_VERSION_MINOR 1)
+
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set (CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/build/share/tutorial)
+set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/build/share/tutorial)
 
 configure_file(config/TutorialConfig.h.in config/TutorialConfig.h)
 
-set (DCMAKE_EXPORT_COMPILE_COMMANDS 1)
+set(DCMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
+add_definitions(-DPROJECT_PATH="${PROJECT_SOURCE_DIR}")
+
 message(STATUS "PATH is: $ENV{PATH}")
 
-set (CMAKE_C_FLAGS "libpcrecpp")
-list (APPEND EXTRA_LIBS pcrecpp)
+set(CMAKE_C_FLAGS "libpcrecpp")
+list(APPEND EXTRA_LIBS pcrecpp)
 
 include(CheckSymbolExists)
 set(CMAKE_REQUIRED_LIBRARIES "m")
 check_symbol_exists(log "math.h" HAVE_LOG)
 check_symbol_exists(exp "math.h" HAVE_EXP)
 
-option(USE_MYMATH "Use my_math provided math implementation" ON)
+option(USE_MYMATH "Use my_math provided math implementation" FALSE)
 
 if(USE_MYMATH)
-    add_subdirectory(MathFunctions)
-    list(APPEND EXTRA_LIBS MathFunctions)
+  add_subdirectory(MathFunctions)
+  list(APPEND EXTRA_LIBS MathFunctions)
 endif()
 
 add_subdirectory(src)
@@ -57,14 +65,14 @@ add_test(NAME Runs COMMAND Tutorial 25)
 add_test(NAME Usage COMMAND Tutorial)
 set_tests_properties(Usage
   PROPERTIES PASS_REGULAR_EXPRESSION "Usage:.*number"
-  )
+)
 
 # define a function to simplify adding tests
 function(do_test target arg result)
   add_test(NAME Comp${arg} COMMAND ${target} ${arg})
   set_tests_properties(Comp${arg}
     PROPERTIES PASS_REGULAR_EXPRESSION ${result}
-    )
+  )
 endfunction(do_test)
 
 # do a bunch of result based tests

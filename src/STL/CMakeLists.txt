@@ -9,6 +9,7 @@ add_executable(stl_adapter stl_adapter.cpp)
 add_executable(stl_utility stl_utility.cpp)
 add_executable(stl_math stl_math.cpp)
 add_executable(stl_regex stl_regex.cpp)
+add_executable(template template.cpp)
 
 target_link_libraries(stl_algo -fsanitize=address)
 target_link_libraries(stl_adapter)

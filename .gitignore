@@ -270,3 +270,8 @@ libs/
 *.png
 *.ii
 .cache/
+
+bin/
+build/
+libs/
+logs/

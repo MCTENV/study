@@ -1,12 +1,10 @@
 #include <cstdio>
 // #include "my_math.h"
-#include "Table.h"
 #include <cmath>
 
-double my_fabs(double num)
-{
-    return num > 0 ? num : -num;
-}
+#include "MathFunctions/Table.h"
+
+double my_fabs(double num) { return num > 0 ? num : -num; }
 
 // double my_sqrt(double num)
 // {
@@ -31,32 +29,27 @@ double my_fabs(double num)
 // #endif
 //     return result;
 // }
-double my_sqrt(double x)
-{
-    if (x <= 0)
-    {
-        return 0;
-    }
+double my_sqrt(double x) {
+  if (x <= 0) {
+    return 0;
+  }
 
-    // use the table to help find an initial value
-    double result = x;
-    if (x >= 1 && x < 10)
-    {
-        printf("Use the table to help find an initial value \n");
-        result = sqrtTable[static_cast<int>(x)];
-    }
+  // use the table to help find an initial value
+  double result = x;
+  if (x >= 1 && x < 10) {
+    printf("Use the table to help find an initial value \n");
+    result = sqrtTable[static_cast<int>(x)];
+  }
 
-    // do ten iterations
-    for (int i = 0; i < 10; ++i)
-    {
-        if (result <= 0)
-        {
-            result = 0.1;
-        }
-        double delta = x - (result * result);
-        result = result + 0.5 * delta / result;
-        printf("Computing sqrt of %lf to be %lf\n", x, result);
+  // do ten iterations
+  for (int i = 0; i < 10; ++i) {
+    if (result <= 0) {
+      result = 0.1;
     }
+    double delta = x - (result * result);
+    result = result + 0.5 * delta / result;
+    printf("Computing sqrt of %lf to be %lf\n", x, result);
+  }
 
-    return result;
+  return result;
 }
