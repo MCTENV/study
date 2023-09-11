@@ -1,0 +1,2 @@
+add_executable(ptr-container ptr_container.cpp)
+set_target_properties(ptr-container PROPERTIES CMAKE_CXX_STANDARD 17 CMAKE_CXX_STANDARD_REQUIRED TRUE)

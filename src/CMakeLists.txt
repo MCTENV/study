@@ -11,8 +11,6 @@ target_link_libraries(tutorial PUBLIC ${EXTRA_LIBS})
 add_executable(main main.cpp ${WIDGET})
 target_include_directories(main PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
-add_executable(mytest mytest.cpp)
-set_target_properties(mytest PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED True)
 
 add_executable(objects objects.cpp)
 
@@ -26,5 +24,7 @@ add_subdirectory(Others)
 add_subdirectory(STL)
 add_subdirectory(pThread)
 add_subdirectory(Complex)
+add_subdirectory(Boost)
+add_subdirectory(LLVM)
 
 install(TARGETS tutorial DESTINATION bin)

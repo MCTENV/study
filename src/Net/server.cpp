@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
   char buffer[1024];
   for (;;) {
     Poco::Net::SocketAddress sender;
-    int n = dgs.receiveFrom(buffer, sizeof(buffer) - 1, sender);
+    auto n = dgs.receiveFrom(buffer, sizeof(buffer) - 1, sender);
     buffer[n] = '\0';
     std::cout << sender.toString() << ": " << buffer << std::endl;
   }
