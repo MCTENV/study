@@ -1,0 +1,39 @@
+CompileFlags:
+  Add: 
+    - -xc++
+    - -Wall
+  Remove: -W*
+  Compiler: clang++
+Style:
+  FullyQualifiedNamespaces:
+    - "std"
+    - "boost"
+    - "llvm"
+Diagnostics:
+  ClangTidy:
+    Add:
+      - cppcoreguidelines-*
+      - performance-*
+      - modernize-*
+      - readability-*
+      - bugprone-*
+    Remove:
+      - modernize-use-trailing-return-type
+      - cppcoreguidelines-init-variables
+    CheckOptions:
+      readability-identifier-naming.AbstractClassCase: aNy_CasE
+      readability-identifier-naming.AbstractClassPrefix: pre_
+      readability-identifier-naming.AbstractClassSuffix: _suf
+  # 删除无用头文件
+  UnusedIncludes: Strict
+Completion:
+  AllScopes: false
+
+InlayHints:
+  Designators: true
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+
+Hover:
+  ShowAKA: true

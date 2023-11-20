@@ -11,7 +11,8 @@
 #include <ostream>
 #include <utility>
 
-class [[deprecated("Test Type deprecated")]] Type {
+// class [[deprecated("Test Type deprecated")]] Type {
+class Type{
  public:
   Type() {}
   Type(int t) : t_(t) { std::cout << "constructor" << std::endl; }

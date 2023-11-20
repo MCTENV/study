@@ -1,15 +1,21 @@
 cmake_minimum_required(VERSION 3.10)
 project(Tutorial)
 
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_COMPILER clang++)
+
 SET(CMAKE_BUILD_TYPE "Debug")
-SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -glldb")
 SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(SOLUTION_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 set(COMPILER_OUTPUT_PATH ${SOLUTION_PATH}/build)
-set(LIBS_OUTPUT_PATH $ENV{HOME}/lib)
-set(EXEC_OUTPUT_PATH $ENV{HOME}/bin)
+
+# set(LIBS_OUTPUT_PATH $ENV{HOME}/lib)
+# set(EXEC_OUTPUT_PATH $ENV{HOME}/bin)
+set(LIBS_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+set(EXEC_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 set(EXECUTABLE_OUTPUT_PATH ${EXEC_OUTPUT_PATH})
 set(LIBRARY_OUTPUT_PATH ${LIBS_OUTPUT_PATH})
@@ -18,7 +24,7 @@ set(LIBRARY_OUTPUT_PATH ${LIBS_OUTPUT_PATH})
 set(Tutorial_VERSION_MAJOR 1)
 set(Tutorial_VERSION_MINOR 1)
 
-set(CMAKE_CXX_STANDARD 11)
+# set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/build/share/tutorial)
 
@@ -27,7 +33,6 @@ configure_file(config/TutorialConfig.h.in config/TutorialConfig.h)
 set(DCMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
-
 add_definitions(-DPROJECT_PATH="${PROJECT_SOURCE_DIR}")
 
 message(STATUS "PATH is: $ENV{PATH}")
@@ -39,6 +44,8 @@ include(CheckSymbolExists)
 set(CMAKE_REQUIRED_LIBRARIES "m")
 check_symbol_exists(log "math.h" HAVE_LOG)
 check_symbol_exists(exp "math.h" HAVE_EXP)
+
+include_directories(/usr/lib/llvm-12/include/c++/v1/iostream)
 
 option(USE_MYMATH "Use my_math provided math implementation" FALSE)
 

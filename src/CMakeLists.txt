@@ -14,11 +14,6 @@ target_include_directories(main PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 add_executable(objects objects.cpp)
 
-add_executable(operators operators.cpp)
-target_link_libraries(operators PRIVATE complex)
-target_include_directories(operators
-    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Complex)
-
 add_subdirectory(Net)
 add_subdirectory(Others)
 add_subdirectory(STL)
@@ -28,3 +23,8 @@ add_subdirectory(Boost)
 add_subdirectory(LLVM)
 
 install(TARGETS tutorial DESTINATION bin)
+
+add_executable(operators operators.cpp)
+target_link_libraries(operators PRIVATE complex)
+target_include_directories(operators
+    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Complex)
