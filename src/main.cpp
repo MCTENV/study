@@ -14,5 +14,7 @@ using namespace std;
 int main(int argc, char const* argv[]) {
   auto spw = make_shared<Widget>(Widget());
   spw->setName("hello world");
+  std::cout << spw->getName() << std::endl;
+  
   return 0;
 }

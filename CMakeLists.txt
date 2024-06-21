@@ -1,12 +1,23 @@
 cmake_minimum_required(VERSION 3.10)
-project(Tutorial)
 
-set(CMAKE_C_COMPILER clang)
-set(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_C_COMPILER "clang")
+set(CMAKE_CXX_COMPILER "clang++")
+
+project(Tutorial LANGUAGES CXX)
 
 SET(CMAKE_BUILD_TYPE "Debug")
-SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -glldb")
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2")
 SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    message(STATUS "use Clang")
+    set(CMAKE_AR        "llvm-ar")
+    set(CMAKE_LINKER    "llvm-ld")
+    set(CMAKE_NM        "llvm-nm")
+    set(CMAKE_OBJDUMP   "llvm-objdump")
+    set(CMAKE_RANLIB    "llvm-ranlib")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -glldb") 
+endif()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(SOLUTION_PATH ${CMAKE_CURRENT_SOURCE_DIR})
@@ -14,7 +25,7 @@ set(COMPILER_OUTPUT_PATH ${SOLUTION_PATH}/build)
 
 # set(LIBS_OUTPUT_PATH $ENV{HOME}/lib)
 # set(EXEC_OUTPUT_PATH $ENV{HOME}/bin)
-set(LIBS_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+set(LIBS_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/libs)
 set(EXEC_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 set(EXECUTABLE_OUTPUT_PATH ${EXEC_OUTPUT_PATH})

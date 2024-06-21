@@ -20,12 +20,14 @@ class string : public std::string {
   ~string() { std::cout << "destructor" << *this << std::endl; }
 
   string &operator=(const string &rhs) {
+    std::string::operator=(static_cast<std::string>(rhs));
     std::cout << "operator=(const string&)" << rhs << std::endl;
     return *this;
   }
 
   string &operator=(const char *rhs) {
-    std::cout << "operator=(const char*)" << rhs << std::endl;
+    std::string::operator=(rhs);
+    // std::cout << "operator=(const char*)" << *this << std::endl;
     return *this;
   }
 };

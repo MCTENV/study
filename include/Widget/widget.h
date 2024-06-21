@@ -24,6 +24,10 @@ class Widget {
     pImpl->name = std::forward<T>(str);
   }
 
+  [[nodiscard]] chen::string getName() const {
+      return pImpl->name;
+  }
+
  private:
   struct Impl {
     // Gadget g1, g2, g3;

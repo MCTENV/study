@@ -1,8 +1,12 @@
+cmake_minimum_required(VERSION 3.10)
 
-find_package(Poco COMPONENTS Net)
+project(my-net LANGUAGES CXX)
 
-add_executable(server server.cpp)
-target_link_libraries(server Poco::Net)
+find_package(Poco COMPONENTS Net Util Foundation)
 
-add_executable(client client.cpp)
-target_link_libraries(client Poco::Net)
+add_executable(server poco-server.cpp)
+target_link_libraries(server Poco::Net Poco::Util Poco::Foundation)
+
+add_executable(client poco-client.cpp)
+target_link_libraries(client Poco::Net Poco::Util Poco::Foundation)
+
