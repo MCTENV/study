@@ -58,8 +58,9 @@ class MyServer : public Poco::Util::ServerApplication
 public:
     int main(const std::vector<std::string>&) override
     {
-        Poco::Net::ServerSocket svs(8'080);
-        Poco::Net::TCPServer    server(new MyConnectionFactory, svs);
+        Poco::Net::SocketAddress sa(Poco::Net::AddressFamily::IPv4, 8'080);
+        Poco::Net::ServerSocket  svs(sa);
+        Poco::Net::TCPServer     server(new MyConnectionFactory, svs);
         server.start();
         waitForTerminationRequest();
         server.stop();

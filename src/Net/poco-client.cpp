@@ -16,8 +16,14 @@ int main(int argc, char** argv)
 {
     Poco::Net::StreamSocket socket;
 
-    Poco::Net::SocketAddress sa("localhost", 8'080);
-    socket.connect(sa);
+    Poco::Net::SocketAddress sa(Poco::Net::AddressFamily::IPv4, "localhost", 8'080);
+    sa.family();
+    try {
+        socket.connect(sa);
+    } catch (const Poco::Exception& exc) {
+        std::cerr << "Error: " << exc.displayText() << std::endl;
+        return 1;
+    }
 
     std::array<char, 1'024> buffer;
 

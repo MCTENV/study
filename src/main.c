@@ -6,7 +6,7 @@ typedef struct person
     int id;
 } person_t;
 
-void main(int argc, char **argv)
+int main(int argc, char **argv)
 {
     // printf("Hello, world!\n");
     ssize_t i;

@@ -6,7 +6,7 @@
  * @date 2023-08-07
  */
 
-#include <boost/type_index.hpp>
+// #include <boost/type_index.hpp>
 #include <iostream>
 #include <ostream>
 #include <utility>
@@ -51,8 +51,8 @@ void copy(Type&& t) { std::cout << "rvalue reference" << std::endl; }
 template <class T>
 void func(T&& t) {
   static int counter = 1;
-  std::cout << boost::typeindex::type_id_with_cvr<T>().pretty_name()
-            << std::endl;
+  // std::cout << boost::typeindex::type_id_with_cvr<T>().pretty_name()
+            // << std::endl;
   t.setT(counter);
   std::cout << counter++ << std::endl;
 

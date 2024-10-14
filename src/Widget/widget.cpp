@@ -8,13 +8,7 @@
 
 #include "Widget/widget.h"
 
-#include <bits/stdc++.h>
-
 #include <iostream>
-#include <string>
-#include <vector>
-
-#include "Widget/gadget.h"
 
 #if 201103L == 201103L
 template <typename T, typename... Args>

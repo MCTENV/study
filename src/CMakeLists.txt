@@ -6,7 +6,7 @@ target_include_directories(tutorial PUBLIC
     ${PROJECT_SOURCE_DIR}/MathFunctions/include
 )
 target_compile_definitions(tutorial PUBLIC MY_MACRO=233)
-target_link_libraries(tutorial PUBLIC ${EXTRA_LIBS})
+target_link_libraries(tutorial PUBLIC ${EXTRA_LIBS} pcrecpp)
 
 add_executable(main main.cpp ${WIDGET})
 target_include_directories(main PUBLIC ${PROJECT_SOURCE_DIR}/include)
@@ -19,7 +19,7 @@ add_subdirectory(Others)
 add_subdirectory(STL)
 add_subdirectory(pThread)
 add_subdirectory(Complex)
-add_subdirectory(Boost)
+# add_subdirectory(Boost)
 add_subdirectory(LLVM)
 
 install(TARGETS tutorial DESTINATION bin)
