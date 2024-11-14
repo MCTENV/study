@@ -1,5 +1,3 @@
-set(CMAKE_BUILD_TYPE Debug)
-
 add_definitions(-DPROJECT_PATH="${PROJECT_SOURCE_DIR}")
 
 include_directories(${PROJECT_SOURCE_DIR}/include)

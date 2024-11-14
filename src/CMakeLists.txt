@@ -19,7 +19,7 @@ add_subdirectory(Others)
 add_subdirectory(STL)
 add_subdirectory(pThread)
 add_subdirectory(Complex)
-# add_subdirectory(Boost)
+add_subdirectory(Boost)
 add_subdirectory(LLVM)
 
 install(TARGETS tutorial DESTINATION bin)
